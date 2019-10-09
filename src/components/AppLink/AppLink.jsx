@@ -13,15 +13,12 @@ const AppLink = () => {
         <Router>
             <React.Fragment>
                 <NavigationBar />
-                <br/>
-
+                <br />
                 <Route exact path='/' component={Home}></Route>
                 <Route path='/about' component={About}></Route>
                 <Route path='/contact' component={Contact}></Route>
                 <Route path='/signup' component={Signup}></Route>
                 <Route path='/login' component={Login}></Route>
-
-
             </React.Fragment>
         </Router>
     );

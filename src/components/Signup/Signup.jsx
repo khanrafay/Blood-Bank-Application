@@ -5,12 +5,15 @@ import {Link} from 'react-router-dom';
 
 
 const Signup = () => {
-
-
+          
+    const SignupUser = () => {
+        console.log("User has been registered");
+    }
+  
     return (
         <React.Fragment>
             
-            <form>
+            <div>
                 <div className='container'>
                     <h1>Sign Up</h1>
                     <p>Please fill in this form to create an account.</p>
@@ -60,6 +63,17 @@ const Signup = () => {
                     </div>
                     <div className='row form-group'>
                         <div className='col-3'>
+                            <label>Role</label>
+                        </div>
+                        <div className='col-3'>
+                            <select className='form-control'>
+                                <option>Donor</option>
+                                <option>Recipient</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='row form-group'>
+                        <div className='col-3'>
                             <label>Blood Group</label>
                         </div>
                         <div className='col-3'>
@@ -72,18 +86,20 @@ const Signup = () => {
                             </select>
                         </div>
                     </div>
-                    <div className='row form-group'>      
+                    <div className='row form-group'>   
+                    <div className='col-3'>
+                        </div>   
                         <div className='col-3'>
-                            <Link to='/login'>
-                            <button className="btn btn-primary" >Sign up</button>
-                            </Link>
+                            
+                            <button className="btn btn-primary" onClick={SignupUser} >Sign up</button>
+                           
                             <small className="form-text text-muted">Already have a account? <Link to='/login'>Login </Link> now</small>
   
                         </div>
                     </div>
                 </div>
 
-            </form>
+            </div>
 
         </React.Fragment>
     );
