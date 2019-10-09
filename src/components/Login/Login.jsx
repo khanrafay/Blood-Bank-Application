@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { isValidES3Identifier } from '@babel/types';
+import { Redirect } from "react-router-dom";
 
 
 const Login = () => {
@@ -39,11 +40,16 @@ const Login = () => {
 
             if (user.emailAddress == emailId && user.password == password) {
                 isUserValid = true;
-                sessionStorage.setItem("user"+ i, JSON.stringify(user));
-                return true;
+                sessionStorage.setItem("user", JSON.stringify(user));
+                return <Redirect to='/dashboard'></Redirect>
+                
             }
         }
     }
+
+   
+    
+    
 
     return (
         <React.Fragment>

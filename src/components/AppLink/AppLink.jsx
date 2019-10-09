@@ -7,6 +7,8 @@ import Home from '../StaticPages/Home';
 import About from '../StaticPages/About';
 import Contact from '../StaticPages/Contact';
 import NavigationBar from '../NavBar/NavBar';
+import Dashboard from '../Dashboard/Dashboard';
+
 
 const AppLink = () => {
     return (
@@ -17,6 +19,7 @@ const AppLink = () => {
                 <Route exact path='/' component={Home}></Route>
                 <Route path='/about' component={About}></Route>
                 <Route path='/contact' component={Contact}></Route>
+                <Route path='/dashboard' component={Dashboard}></Route>
                 <Route path='/signup' component={Signup}></Route>
                 <Route path='/login' component={Login}></Route>
             </React.Fragment>
