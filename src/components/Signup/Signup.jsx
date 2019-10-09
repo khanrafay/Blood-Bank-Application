@@ -10,19 +10,43 @@ const Signup = (props) => {
     let [lastName, setLastName] = useState("");
     let [emailAddress, setEmailAddress] = useState("");
     let [password, setPassword] = useState("");
-    let[gender,setGender] = useState("");
-    let[role,setRole] = useState("");
-    let[bloodGroup,setBloodGroup] = useState("");
+    let [gender, setGender] = useState("");
+    let [role, setRole] = useState("");
+    let [bloodGroup, setBloodGroup] = useState("");
 
-   
+
     const onSubmitChange = (e) => {
-         e.preventDefault();
-        console.log(e.target);
-        localStorage.setItem(e.target[0].name, e.target[0].value);
-    
+        e.preventDefault();
 
-    
-        
+        if (localStorage.getItem("userCount") != null) {
+            var countUserId = localStorage.getItem("userCount");
+        } else {
+            var countUserId = 0;
+        }
+
+        var firstName = e.target[0].value;
+        var lastName = e.target[1].value;
+        var emailAddress = e.target[2].value;
+        var password = e.target[3].value;
+        var gender = e.target[4].value;
+        var role = e.target[5].value;
+        var bloodGroup = e.target[6].value;
+
+        var user = {
+            userId: countUserId, firstName: firstName, lastName: lastName,
+            "emailAddress": emailAddress, password: password, gender: gender,
+            role: role, bloodGroup: bloodGroup
+        }
+
+        localStorage.setItem("user" + countUserId, JSON.stringify(user));
+        countUserId++;
+        localStorage.setItem("userCount", countUserId);
+
+
+
+
+
+
     }
 
     return (
@@ -78,7 +102,7 @@ const Signup = (props) => {
                             <label>Gender</label>
                         </div>
                         <div className='col-3'>
-                            <select className='form-control' name='gender' value={gender} onChange={(e) =>{
+                            <select className='form-control' name='gender' value={gender} onChange={(e) => {
                                 console.log("logging" + e.target.value);
                                 setGender(e.target.value)
                             }} >
@@ -92,7 +116,7 @@ const Signup = (props) => {
                             <label>Role</label>
                         </div>
                         <div className='col-3'>
-                            <select className='form-control' name='role' value={role} onChange={(e) =>{
+                            <select className='form-control' name='role' value={role} onChange={(e) => {
                                 setRole(e.target.value)
                             }}>
                                 <option value='donor'>Donor</option>
@@ -105,7 +129,7 @@ const Signup = (props) => {
                             <label>Blood Group</label>
                         </div>
                         <div className='col-3'>
-                            <select className='form-control' name='bloodGroup' value={bloodGroup} onChange={(e) =>{
+                            <select className='form-control' name='bloodGroup' value={bloodGroup} onChange={(e) => {
                                 setBloodGroup(e.target.value)
                             }}>
                                 <option value='A'>A</option>
