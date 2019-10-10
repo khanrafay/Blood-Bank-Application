@@ -4,13 +4,16 @@ import { isValidES3Identifier } from '@babel/types';
 import { Redirect } from "react-router-dom";
 
 
+
 const Login = () => {
 
     let [emailAddress, setEmailAddress] = useState("");
     let [password, setPassword] = useState("");
+    
     var isUserValid = false;
+    var showError = false;
 
-    var inValidMessage = "";
+    var inValidMessage = <label id="lblError">Invalid Credentials</label>;
 
     var x = JSON.parse(localStorage.getItem('user0'));
     console.log("this " + x.firstName);
@@ -20,12 +23,13 @@ const Login = () => {
         console.log(e.target);
         var userEmailId = e.target[0].value;
         var userPassword = e.target[1].value;
+
         if (!(userEmailId == "" || userPassword == "")) {
             CheckingUserData(userEmailId, userPassword);
-        }
-        else {
-            inValidMessage = "Invalid Credentials";
-        }
+            showError = true;
+            
+         }
+
     }
 
     const CheckingUserData = (emailId, password) => {
@@ -35,21 +39,24 @@ const Login = () => {
             var countUserId = 0;
         }
 
-        for (var i = 0; i <= countUserId; i++) {
+        for (var i = 0; i < countUserId; i++) {
             var user = JSON.parse(localStorage.getItem("user" + i));
 
             if (user.emailAddress == emailId && user.password == password) {
                 isUserValid = true;
                 sessionStorage.setItem("user", JSON.stringify(user));
-                return <Redirect to='/dashboard'></Redirect>
-                
+                window.location.pathname = "/dashboard";
+                break;
+
             }
         }
+       
+
     }
 
-   
-    
-    
+
+
+
 
     return (
         <React.Fragment>
@@ -66,7 +73,7 @@ const Login = () => {
                             <input type='text' value={emailAddress}
                                 onChange={(e) => {
                                     setEmailAddress(e.target.value)
-                                }} className='form-control'></input>
+                                }} className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
@@ -78,16 +85,17 @@ const Login = () => {
                                 onChange={(e) => {
                                     setPassword(e.target.value)
                                 }}
-                                className='form-control'></input>
+                                className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
                         <div className='col-3'></div>
                         <div className='col-3'>
                             <input type="submit" value="Login" className="btn btn-primary" />
-                            <label id="lblMessage">{inValidMessage}</label>
+                            
+                            
                             <small className="form-text text-muted">Don't have an account? <Link to='/signup'>Sign Up </Link> now</small>
-
+                           
                         </div>
                     </div>
                 </div>

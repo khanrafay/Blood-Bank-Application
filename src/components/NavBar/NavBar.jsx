@@ -3,7 +3,22 @@ import { Link } from 'react-router-dom';
 
 const NavigationBar = (props) => {
   console.log(props);
+   
+  var user = sessionStorage.getItem("user");
+    console.log(user);
 
+    var isLoggedIn = false;
+    var signupLink = <Link to='/signup' className='m-3'>Sign Up</Link>;
+    var loginLink = <Link to='/login'>Log In</Link>;
+    var arrLinks = [<Link to='/signup' className='m-3'>Sign Up</Link>,<Link to='/login'>Log In</Link>];
+    var logoutLink =  <Link to='/home' onClick={()=>{
+      sessionStorage.clear();
+      window.location.pathname = '/login';
+    }} >Logout</Link>;
+  
+    if(user != null)
+           isLoggedIn = true;
+  
   return (
     
     <React.Fragment>
@@ -28,8 +43,7 @@ const NavigationBar = (props) => {
             </li>
           </ul>
           <div className="form-inline my-2 my-lg-0">
-            <Link to='/signup' className='m-3'>Sign Up</Link>
-            <Link to='/login'>Log In</Link>
+           {isLoggedIn ? logoutLink : arrLinks }
           </div>
         </div>
       </nav>

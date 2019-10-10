@@ -64,7 +64,7 @@ const Signup = (props) => {
                         <div className='col-3'>
                             <input type='text' name='firstName' value={firstName} onChange={(e) => {
                                 setFirstName(e.target.value)
-                            }} className='form-control'></input>
+                            }} className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
@@ -74,7 +74,7 @@ const Signup = (props) => {
                         <div className='col-3'>
                             <input type='text' name='lastName' value={lastName} onChange={(e) => {
                                 setLastName(e.target.value)
-                            }} className='form-control'></input>
+                            }} className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
@@ -84,7 +84,7 @@ const Signup = (props) => {
                         <div className='col-3'>
                             <input type='text' name='emailAddress' value={emailAddress} onChange={(e) => {
                                 setEmailAddress(e.target.value)
-                            }} className='form-control'></input>
+                            }} className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
@@ -94,7 +94,7 @@ const Signup = (props) => {
                         <div className='col-3'>
                             <input type='password' name='password' value={password} onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} className='form-control'></input>
+                            }} className='form-control' required></input>
                         </div>
                     </div>
                     <div className='row form-group'>
