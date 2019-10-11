@@ -15,7 +15,6 @@ const AppLink = () => {
         <Router>
             <React.Fragment>
                 <NavigationBar />
-                <br />
                 <Route exact path='/' component={Home}></Route>
                 <Route path='/about' component={About}></Route>
                 <Route path='/contact' component={Contact}></Route>

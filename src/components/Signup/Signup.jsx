@@ -41,6 +41,7 @@ const Signup = (props) => {
         localStorage.setItem("user" + countUserId, JSON.stringify(user));
         countUserId++;
         localStorage.setItem("userCount", countUserId);
+        window.location.pathname = "/dashboard";
 
 
 
